@@ -99,6 +99,7 @@ alias more=less
 alias confgit='/usr/bin/git --git-dir=$HOME/Documents/Coding/git/dotfiles --work-tree=$HOME'
 alias ls='lsd'
 alias ll='ls -lA'
+alias vim='nvim'
 
 xhost +local:root > /dev/null 2>&1
 
