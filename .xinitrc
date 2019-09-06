@@ -3,9 +3,15 @@
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
+# If using LightDM, see /etc/lightdm/Xsession instead
 
-userresources=$XDG_CONFIG_HOME/X11/Xresources
-usermodmap=$XDG_CONFIG_HOME/X11/Xmodmap
+CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
+RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$UID}
+
+export XAUTHORITY=$RUNTIME_DIR/Xauthority
+
+userresources=$CONFIG_DIR/X11/Xresources
+usermodmap=$CONFIG_DIR/X11/Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
