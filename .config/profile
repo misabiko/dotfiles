@@ -1,3 +1,6 @@
+CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
+CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}
+
 export EDITOR=/usr/bin/vim
 export VISUAL=$EDITOR
 
@@ -5,28 +8,19 @@ export TERMINAL=/usr/bin/lxterminal
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export XDG_CURRENT_DESKTOP=XFCE
-export XDG_CONFIG_DIRS=/etc/xdg
 
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
+export DefaultIMModule=fcitx
 
-export HISTFILE=$XDG_CONFIG_HOME/bash/bash_history
+export HISTFILE=$CONFIG_DIR/bash/bash_history
 
-export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
-#export VIMDOTDIR=$XDG_CONFIG_HOME/vim
+export VIMINIT=":source $CONFIG_DIR"/vim/vimrc
+#export VIMDOTDIR=$CONFIG_DIR/vim
 
-export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
+export INPUTRC=$CONFIG_DIR/readline/inputrc
 
-export LESSKEY=$XDG_CONFIG_HOME/less/lesskey
-export LESSHISTFILE=$XDG_CACHE_HOME/less/history
+export LESSKEY=$CONFIG_DIR/less/lesskey
+export LESSHISTFILE=$CACHE_DIR/less/history
 
-#export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
-
-# if running bash
-#if [ -n $BASH_VERSION ]; then
-#	# include .bashrc if it exists
-#	if [ -f $XDG_CONFIG_HOME/bash/bashrc ]; then
-#		. $XDG_CONFIG_HOME/bash/bashrc
-#	fi
-#fi
+if [[ -n $BASH_VERSION ]] && [[ -f $CONFIG_DIR/bash/bashrc ]]; then
+    . $CONFIG_DIR/bash/bashrc
+fi
