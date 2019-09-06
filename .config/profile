@@ -13,8 +13,6 @@ export DefaultIMModule=fcitx
 
 export HISTFILE=$CONFIG_DIR/bash/bash_history
 
-export VIMINIT=":source $CONFIG_DIR"/vim/vimrc
-
 export INPUTRC=$CONFIG_DIR/readline/inputrc
 
 export GNUPGHOME=$CONFIG_DIR/gnupg
@@ -25,7 +23,3 @@ export GTK2_RC_FILES=$CONFIG_DIR/gtk-2.0/gtkrc
 
 export LESSKEY=$CONFIG_DIR/less/lesskey
 export LESSHISTFILE=$CACHE_DIR/less/history
-
-if [[ -n $BASH_VERSION ]] && [[ -f $CONFIG_DIR/bash/bashrc ]]; then
-    . $CONFIG_DIR/bash/bashrc
-fi
