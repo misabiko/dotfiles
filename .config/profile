@@ -14,9 +14,14 @@ export DefaultIMModule=fcitx
 export HISTFILE=$CONFIG_DIR/bash/bash_history
 
 export VIMINIT=":source $CONFIG_DIR"/vim/vimrc
-#export VIMDOTDIR=$CONFIG_DIR/vim
 
 export INPUTRC=$CONFIG_DIR/readline/inputrc
+
+export GNUPGHOME=$CONFIG_DIR/gnupg
+
+export WGETRC=$CONFIG_DIR/wgetrc
+
+export GTK2_RC_FILES=$CONFIG_DIR/gtk-2.0/gtkrc
 
 export LESSKEY=$CONFIG_DIR/less/lesskey
 export LESSHISTFILE=$CACHE_DIR/less/history
