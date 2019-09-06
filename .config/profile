@@ -23,3 +23,5 @@ export GTK2_RC_FILES=$CONFIG_DIR/gtk-2.0/gtkrc
 
 export LESSKEY=$CONFIG_DIR/less/lesskey
 export LESSHISTFILE=$CACHE_DIR/less/history
+
+export ATOM_HOME=$CONFIG_DIR/atom
