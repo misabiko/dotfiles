@@ -16,6 +16,7 @@ local freedesktop = require("freedesktop")
 require("awful.hotkeys_popup.keys.vim")
 
 local switcher = require("awesome-switcher")
+local keyboard_layout = require("keyboard_layout")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -140,7 +141,18 @@ menubar.utils.terminal = terminal -- set the terminal for applications that requ
 -- create a textclock widget
 mytextclock = wibox.widget.textclock("%a %Y/%m/%d %I:%M %p ")
 -- keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+--mykeyboardlayout = awful.widget.keyboardlayout()
+
+local kbdcfg = keyboard_layout.kbdcfg({cmd = "fcitx-remote -s", type = "tui"})
+
+kbdcfg.add_primary_layout("English", "EN", "fcitx-keyboard-ca-multix")
+kbdcfg.add_primary_layout("Japanese", "JP", "mozc")
+kbdcfg.bind()
+
+kbdcfg.widget:buttons(
+    awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
+                          awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
+)
 
 darkblue    = beautiful.bg_focus
 blue        = "#9ebaba"
@@ -229,7 +241,7 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
-	
+
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
@@ -250,7 +262,8 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            mykeyboardlayout,
+--            mykeyboardlayout,
+            kbdcfg.widget,
             separator,
             mytextclock,
             s.mylayoutbox,
@@ -393,7 +406,10 @@ globalkeys = gears.table.join(
     end),
     awful.key({ "Mod1", "Shift" }, "Tab", function()
         awful.menu.clients()
-    end)
+    end),
+
+    awful.key({"Shift"}, "Alt_L", function() kbdcfg.switch_next() end),
+    awful.key({"Mod1"}, "Shift_L", function() kbdcfg.switch_next() end)
 )
 
 clientkeys = gears.table.join(
@@ -557,7 +573,7 @@ awful.rules.rules = {
     --{ rule_any = {type = { "normal", "dialog" } },
     --  properties = { titlebars_enabled = true }
     --},
-	
+
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
@@ -686,4 +702,3 @@ end
 --end)
 
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
-
