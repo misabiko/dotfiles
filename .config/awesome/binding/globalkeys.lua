@@ -4,6 +4,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
 local menubar = require("menubar")
+local sharedtags = require("awesome-sharedtags")
 
 local globalkeys = gears.table.join(
 	awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -141,9 +142,9 @@ for i = 1, 9 do
 		awful.key({ modkey }, "#" .. i + 9,
 				  function ()
 						local screen = awful.screen.focused()
-						local tag = screen.tags[i]
-						if tag then
-						   tag:view_only()
+						local tag = RC.tags[i]
+						if tag and (tag.screen == screen or (tag.name:sub(1, 4) ~= "main" and tag.name:sub(1, 3) ~= "www")) then
+						   sharedtags.viewonly(tag, screen)
 						end
 				  end,
 				  {description = "view tag #"..i, group = "tag"}),
@@ -151,9 +152,9 @@ for i = 1, 9 do
 		awful.key({ modkey, "Control" }, "#" .. i + 9,
 				  function ()
 					  local screen = awful.screen.focused()
-					  local tag = screen.tags[i]
+					  local tag = RC.tags[i]
 					  if tag then
-						 awful.tag.viewtoggle(tag)
+						 sharedtags.viewtoggle(tag, screen)
 					  end
 				  end,
 				  {description = "toggle tag #" .. i, group = "tag"}),
@@ -161,7 +162,7 @@ for i = 1, 9 do
 		awful.key({ modkey, "Shift" }, "#" .. i + 9,
 				  function ()
 					  if client.focus then
-						  local tag = client.focus.screen.tags[i]
+						  local tag = RC.tags[i]
 						  if tag then
 							  client.focus:move_to_tag(tag)
 						  end
@@ -172,7 +173,7 @@ for i = 1, 9 do
 		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
 				  function ()
 					  if client.focus then
-						  local tag = client.focus.screen.tags[i]
+						  local tag = RC.tags[i]
 						  if tag then
 							  client.focus:toggle_tag(tag)
 						  end

@@ -57,9 +57,9 @@ awful.rules.rules = {
 
 	{rule = {class = "Vivaldi-stable"}, properties = {
 		callback=function(c)
-			c:toggle_tag(c.screen.tags[2])
+			c:toggle_tag(RC.tags[2])
 		end}},
-	{rule = {class = "keepassxc"}, properties = {tag=RC.tags[3]}},
+	{rule = {class = "keepassxc"}, properties = {tag=RC.tags[4]}},
 
 	{ rule = { tag = "fd" }, properties = { titlebars_enabled = true } }
 }
