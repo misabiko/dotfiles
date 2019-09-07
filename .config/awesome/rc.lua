@@ -17,18 +17,11 @@ require("main.error-handling")
 
 require("main.theme")
 
-local main = {
-	layouts = require("main.layouts"),
-	tags	= require("main.tags"),
-	menu	= require("main.menu"),
-	rules	= require("main.rules")
-}
-
-RC.layouts = main.layouts()
-RC.tags = main.tags()
+RC.layouts = require("main.layouts")
+RC.tags = require("main.tags")
 
 -- {{{ menu
-RC.mainmenu = main.menu()
+RC.mainmenu = require("main.menu")
 
 RC.launcher = awful.widget.launcher(
 	{ image = beautiful.awesome_icon, menu = RC.mainmenu }

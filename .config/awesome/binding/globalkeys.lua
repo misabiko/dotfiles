@@ -129,8 +129,8 @@ local globalkeys = gears.table.join(
 		awful.menu.clients()
 	end),
 
-	awful.key({"Shift"}, "Alt_L", function() kbdcfg.switch_next() end),
-	awful.key({"Mod1"}, "Shift_L", function() kbdcfg.switch_next() end)
+	awful.key({"Shift"}, "Alt_L", function() RC.kbdcfg.switch_next() end),
+	awful.key({"Mod1"}, "Shift_L", function() RC.kbdcfg.switch_next() end)
 )
 
 for i = 1, 9 do

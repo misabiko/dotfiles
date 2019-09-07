@@ -5,24 +5,22 @@ local keyboard_layout = require("keyboard_layout")
 local beautiful = require("beautiful")
 local gears = require("gears")
 
+local taglistbuttons = require("binding.taglistbuttons")
+local tasklistbuttons = require("binding.tasklistbuttons")
+
 -- create a textclock widget
 mytextclock = wibox.widget.textclock("%a %Y/%m/%d %I:%M %p ")
 
 -- keyboard map indicator and switcher
-local kbdcfg = keyboard_layout.kbdcfg({cmd = "fcitx-remote -s", type = "tui"})
+RC.kbdcfg = keyboard_layout.kbdcfg({cmd = "fcitx-remote -s", type = "tui"})
 
-kbdcfg.add_primary_layout("English", "EN", "fcitx-keyboard-ca-multix")
-kbdcfg.add_primary_layout("Japanese", "JP", "mozc")
-kbdcfg.bind()
+RC.kbdcfg.add_primary_layout("English", "EN", "fcitx-keyboard-ca-multix")
+RC.kbdcfg.add_primary_layout("Japanese", "JP", "mozc")
+RC.kbdcfg.bind()
 
-local binding = {
-	taglistbuttons = require("binding.taglistbuttons"),
-	tasklistbuttons = require("binding.tasklistbuttons")
-}
-
-kbdcfg.widget:buttons(
-    awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
-                          awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
+RC.kbdcfg.widget:buttons(
+    awful.util.table.join(awful.button({ }, 1, function () RC.kbdcfg.switch_next() end),
+                          awful.button({ }, 3, function () RC.kbdcfg.menu:toggle() end))
 )
 
 local darkblue    = beautiful.bg_focus
@@ -43,10 +41,10 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, binding.taglistbuttons())
+    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglistbuttons)
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, binding.tasklistbuttons())
+    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklistbuttons)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -66,7 +64,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
 --            mykeyboardlayout,
-            kbdcfg.widget,
+            RC.kbdcfg.widget,
             separator,
             mytextclock,
             s.mylayoutbox,

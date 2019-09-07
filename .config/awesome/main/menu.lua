@@ -19,21 +19,17 @@ menu.exit = {
     { "shutdown", "poweroff", menubar.utils.lookup_icon("system-shutdown") }
 }
 
-function _M.get()
-	return freedesktop.menu.build({
-	    icon_size = 32,
-	    before = {
-	        { "terminal", RC.vars.terminal, menubar.utils.lookup_icon("utilities-RC.vars.terminal") },
-	        { "browser", RC.vars.browser, menubar.utils.lookup_icon("internet-web-browser") },
-	        { "files", RC.vars.filemanager, menubar.utils.lookup_icon("system-file-manager") },
-	        -- other triads can be put here
-	    },
-	    after = {
-	        { "awesome", RC.awesome, "/usr/share/awesome/icons/awesome32.png" },
-	        { "exit", RC.exit, menubar.utils.lookup_icon("system-shutdown") },
-	        -- other triads can be put here
-	    }
-	})
-end
-
-return setmetatable({}, {__call = function(_, ...) return _M.get(...) end})
+return freedesktop.menu.build({
+    icon_size = 32,
+    before = {
+        { "terminal", RC.vars.terminal, menubar.utils.lookup_icon("utilities-RC.vars.terminal") },
+        { "browser", RC.vars.browser, menubar.utils.lookup_icon("internet-web-browser") },
+        { "files", RC.vars.filemanager, menubar.utils.lookup_icon("system-file-manager") },
+        -- other triads can be put here
+    },
+    after = {
+        { "awesome", RC.awesome, "/usr/share/awesome/icons/awesome32.png" },
+        { "exit", RC.exit, menubar.utils.lookup_icon("system-shutdown") },
+        -- other triads can be put here
+    }
+})

@@ -1,5 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local clientkeys = require("binding.clientkeys")
+local clientbuttons = require("binding.clientbuttons")
 
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -9,8 +11,8 @@ awful.rules.rules = {
 					 border_color = beautiful.border_normal,
 					 focus = awful.client.focus.filter,
 					 raise = true,
-					 keys = require("binding.clientkeys"),
-					 buttons = require("binding.clientbuttons"),
+					 keys = clientkeys,
+					 buttons = clientbuttons,
 					 size_hints_honor = false, -- Remove gaps between terminals
 					 screen = awful.screen.preferred,
 					 callback = awful.client.setslave,
