@@ -59,7 +59,8 @@ awful.rules.rules = {
 		callback=function(c)
 			c:toggle_tag(c.screen.tags[2])
 		end}},
-	{rule = {class = "keepassxc"}, properties = {tag=RC.tags[3]}},
+	{rule = {class = "keepassxc"}, properties = {tag=RC.tags["1/fd"]}},
+	{rule_any = {class = {"Atom"}}, properties = {tag=RC.tags["1/ide"]}},
 
 	{ rule = { tag = "fd" }, properties = { titlebars_enabled = true } }
 }
