@@ -76,6 +76,14 @@ kbdcfg.add_primary_layout("English", "EN", "fcitx-keyboard-ca-multix")
 kbdcfg.add_primary_layout("Japanese", "JP", "mozc")
 kbdcfg.bind()
 
+local binding = {
+	globalbuttons = require("binding.globalbuttons"),
+	globalkeys = require("binding.globalkeys"),
+	clientkeys = require("binding.clientkeys"),
+	clientbuttons = require("binding.clientbuttons"),
+	taglistbuttons = require("binding.taglistbuttons")
+}
+
 kbdcfg.widget:buttons(
     awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
                           awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
@@ -87,23 +95,6 @@ red         = "#eb8f8f"
 separator = wibox.widget.textbox(' <span color="' .. blue .. '">| </span>')
 spacer = wibox.widget.textbox(' <span color="' .. blue .. '"> </span>')
 
--- create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
 
 local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
@@ -160,7 +151,7 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, binding.taglistbuttons())
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
@@ -191,13 +182,6 @@ awful.screen.connect_for_each_screen(function(s)
     }
 end)
 -- }}}
-
-local binding = {
-	globalbuttons = require("binding.globalbuttons"),
-	globalkeys = require("binding.globalkeys"),
-	clientkeys = require("binding.clientkeys"),
-	clientbuttons = require("binding.clientbuttons")
-}
 
 root.buttons(binding.globalbuttons())
 

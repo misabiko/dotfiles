@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local menubar = require("menubar")
 
 local _M = {}
 
@@ -27,7 +28,7 @@ function _M.get()
 	        end,
 	        {description = "focus previous by index", group = "client"}
 	    ),
-	    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+	    awful.key({ modkey,           }, "w", function () RC.mainmenu:show() end,
 	              {description = "show main menu", group = "awesome"}),
 
 	    -- Layout manipulation
@@ -72,11 +73,11 @@ function _M.get()
 	              {description = "increase the number of columns", group = "layout"}),
 	    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)           end,
 	              {description = "decrease the number of columns", group = "layout"}),
-	    awful.key({ modkey     }, "b", function () awful.spawn(browser)          end,
+	    awful.key({ modkey     }, "b", function () awful.spawn(RC.vars.browser)          end,
 	              {description = "launch Browser", group = "launcher"}),
 	    awful.key({ modkey, "Control"}, "Escape", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
 	              {description = "launch rofi", group = "launcher"}),
-	    awful.key({ modkey,           }, "e", function () awful.spawn(filemanager)            end,
+	    awful.key({ modkey,           }, "e", function () awful.spawn(RC.vars.filemanager)            end,
 	              {description = "launch filemanager", group = "launcher"}),
 	    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
 	              {description = "select previous", group = "layout"}),
