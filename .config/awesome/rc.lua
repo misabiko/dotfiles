@@ -1,12 +1,15 @@
 -- Standard awesome library
 local gears = require("gears")
 awful = require("awful")
+naughty = require("naughty")
 require("awful.autofocus")
 -- Theme handling library
 local beautiful = require("beautiful")
 local menubar = require("menubar")
--- Enable VIM help for hotkeys widget when client with matching name is opened:
-require("awful.hotkeys_popup.keys.vim")
+
+function nprint(str)
+	naughty.notify{text=str, timeout=0}
+end
 
 RC = {}
 RC.vars = require("main.user-variables")

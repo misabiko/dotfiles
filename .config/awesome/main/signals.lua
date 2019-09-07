@@ -1,6 +1,8 @@
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
+-- Widget and layout library
+local wibox = require("wibox")
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)

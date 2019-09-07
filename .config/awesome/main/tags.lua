@@ -10,6 +10,7 @@ awful.screen.connect_for_each_screen(function(s)
     local layouts = { l.tile, l.max, l.floating, l.tile, l.tile, l.tile, l.tile, l.tile, l.tile }
     tags = awful.tag(names, s, layouts)
 
+	tags[2].selected = true
 end)
 
 return tags
