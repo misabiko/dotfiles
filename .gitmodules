@@ -1,6 +1,3 @@
 [submodule ".config/awesome/keyboard_layout"]
 	path = .config/awesome/keyboard_layout
 	url = https://github.com/echuraev/keyboard_layout.git
-[submodule ".config/awesome/awesome-sharedtags"]
-	path = .config/awesome/awesome-sharedtags
-	url = https://github.com/Drauthius/awesome-sharedtags.git
