@@ -38,25 +38,13 @@ RC.launcher = awful.widget.launcher(
 menubar.utils.terminal = RC.vars.terminal -- set the terminal for applications that require it
 -- }}}
 
-local binding = {
-	globalbuttons = require("binding.globalbuttons"),
-	globalkeys = require("binding.globalkeys"),
-	clientkeys = require("binding.clientkeys"),
-	clientbuttons = require("binding.clientbuttons"),
-	taglistbuttons = require("binding.taglistbuttons"),
-	tasklistbuttons = require("binding.tasklistbuttons")
-}
-
 require("main.wibar")
 
-root.buttons(binding.globalbuttons())
+require("binding.globalbuttons")
 
-root.keys(binding.globalkeys())
+require("binding.globalkeys")
 
-awful.rules.rules = main.rules(
-	binding.clientkeys(),
-	binding.clientbuttons()
-)
+require("main.rules")
 
 require("main.signals")
 
