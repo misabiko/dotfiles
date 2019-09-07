@@ -4,16 +4,9 @@ awful = require("awful")
 require("awful.autofocus")
 -- Theme handling library
 local beautiful = require("beautiful")
--- Notification library
-naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup").widget
--- Freedesktop menu
-local freedesktop = require("freedesktop")
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
-
-local switcher = require("awesome-switcher")
 
 RC = {}
 RC.vars = require("main.user-variables")
