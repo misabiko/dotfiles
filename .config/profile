@@ -25,3 +25,5 @@ export LESSKEY=$CONFIG_DIR/less/lesskey
 export LESSHISTFILE=$CACHE_DIR/less/history
 
 export ATOM_HOME=$CONFIG_DIR/atom
+
+export NPM_CONFIG_USERCONFIG=$CONFIG_DIR/npm/npmrc
