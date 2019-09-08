@@ -2,16 +2,15 @@ local menubar = require("menubar")
 local freedesktop = require("freedesktop")
 
 local _M = {}
-local menu = {}
 
-menu.awesome = {
+awesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end, menubar.utils.lookup_icon("preferences-desktop-keyboard-shortcuts") },
     { "manual", RC.vars.terminal .. " -e man awesome", menubar.utils.lookup_icon("system-help") },
     { "edit config", RC.vars.gui_editor .. " " .. awesome.conffile,  menubar.utils.lookup_icon("accessories-text-editor") },
     { "restart", awesome.restart, menubar.utils.lookup_icon("system-restart") }
 }
 
-menu.exit = {
+exitmenu = {
     { "log out", function() awesome.quit() end, menubar.utils.lookup_icon("system-log-out") },
     { "suspend", "systemctl suspend", menubar.utils.lookup_icon("system-suspend") },
     { "hibernate", "systemctl hibernate", menubar.utils.lookup_icon("system-suspend-hibernate") },
@@ -28,8 +27,8 @@ return freedesktop.menu.build({
         -- other triads can be put here
     },
     after = {
-        { "awesome", RC.awesome, "/usr/share/awesome/icons/awesome32.png" },
-        { "exit", RC.exit, menubar.utils.lookup_icon("system-shutdown") },
+        { "awesome", awesomemenu, "/usr/share/awesome/icons/awesome32.png" },
+        { "exit", exitmenu, menubar.utils.lookup_icon("system-shutdown") },
         -- other triads can be put here
     }
 })
