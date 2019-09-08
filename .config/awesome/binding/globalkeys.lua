@@ -49,6 +49,10 @@ local globalkeys = gears.table.join(
 			end
 		end,
 		{description = "go back", group = "client"}),
+	awful.key({ modkey,           }, "space", function () awful.layout.inc( 1) end,
+          	{description = "select next", group = "layout"}),
+	awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1) end,
+			{description = "select previous", group = "layout"}),
 
 	-- Standard program
 	awful.key({ modkey,           }, "Return", function () awful.spawn(RC.vars.terminal) end,
@@ -78,8 +82,6 @@ local globalkeys = gears.table.join(
 			  {description = "launch rofi", group = "launcher"}),
 	awful.key({ modkey,           }, "e", function () awful.spawn(RC.vars.filemanager)            end,
 			  {description = "launch filemanager", group = "launcher"}),
-	awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
-			  {description = "select previous", group = "layout"}),
 	awful.key({                   }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -d")   end,
 			  {description = "capture a screenshot", group = "screenshot"}),
 	awful.key({"Control"          }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -w")   end,
