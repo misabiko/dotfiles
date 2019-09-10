@@ -1,7 +1,7 @@
 CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}
 
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 export VISUAL=$EDITOR
 
 export TERMINAL=/usr/bin/lxterminal
