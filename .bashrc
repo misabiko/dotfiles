@@ -96,7 +96,7 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
-alias confgit='/usr/bin/git --git-dir=$HOME/Documents/Coding/git/dotfiles --work-tree=$HOME'
+alias confgit='/usr/bin/git --git-dir=$HOME/Documents/git/dotfiles --work-tree=$HOME'
 alias ls='lsd'
 alias ll='ls -lA'
 alias vim='nvim'
