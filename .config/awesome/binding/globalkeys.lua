@@ -86,7 +86,7 @@ local globalkeys = gears.table.join(
 			  {description = "capture a screenshot", group = "screenshot"}),
 	awful.key({"Control"          }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -w")   end,
 			  {description = "capture a screenshot of active window", group = "screenshot"}),
-	awful.key({"Shift"            }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -s")   end,
+	awful.key({"Shift"            }, "Print", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/maim -os ~/Dropbox/Photos/Screenshots/$(date +%s).png")   end,
 			  {description = "capture a screenshot of selection", group = "screenshot"}),
 
 	awful.key({ modkey, "Control" }, "n",
