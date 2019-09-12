@@ -14,7 +14,7 @@ awful.screen.connect_for_each_screen(function(s)
 		new_tags = awful.tag(
 			{"main", "www", "ide", "fd", "5", "6", "7", "8", "9"},
 			s,
-			{l.tile, l.fair, l.max, l.floating, l.tile, l.tile, l.tile, l.tile, l.tile }
+			{l.tile, l.tile, l.max, l.floating, l.tile, l.tile, l.tile, l.tile, l.tile }
 		)
 	else
 		new_tags = awful.tag(names, s, layouts)
