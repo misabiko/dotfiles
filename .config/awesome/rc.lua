@@ -7,8 +7,8 @@ require("awful.autofocus")
 local beautiful = require("beautiful")
 local menubar = require("menubar")
 
-function nprint(str)
-	naughty.notify{text=str, timeout=0}
+function nprint(log)
+	naughty.notify{text=tostring(str), timeout=0}
 end
 
 RC = {}
