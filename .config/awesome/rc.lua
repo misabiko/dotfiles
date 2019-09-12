@@ -8,7 +8,7 @@ local beautiful = require("beautiful")
 local menubar = require("menubar")
 
 function nprint(log)
-	naughty.notify{text=tostring(str), timeout=0}
+	naughty.notify{text=tostring(log), timeout=0
 end
 
 RC = {}
