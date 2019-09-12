@@ -7,8 +7,6 @@ function run {
    fi
 }
 
-xrandr --output DP-4 --primary
-
 ## run (only once) processes which spawn with different name
 if (command -v gnome-keyring-daemon && ! pgrep gnome-keyring-d); then
     gnome-keyring-daemon --daemonize --login &
